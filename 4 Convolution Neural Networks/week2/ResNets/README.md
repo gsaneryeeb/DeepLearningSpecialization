@@ -33,7 +33,6 @@ Final Step:
 ## ResNet-50 model
 
 <img src="images/resnet_kiank.png" style="width:850px;height:150px;">
-<caption><center><font color='purple'>  : **ResNet-50 model** </center></caption>
 
 - Zero-padding pads the input with a pad of (3,3)
 - Stage 1:
