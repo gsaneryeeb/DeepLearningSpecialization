@@ -1,5 +1,3 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 # Residual Networks
 
 **In this assignment, you will:**
@@ -13,4 +11,4 @@ This assignment will be done in Keras.
 ### Four Steps:
 
 First component of main path:
-- The first CONV2D has $F_1$ filters of shape(1,1)
+- The first CONV2D has <img src="https://latex.codecogs.com/gif.latex?_{F_{1}}"> filters of shape(1,1)
