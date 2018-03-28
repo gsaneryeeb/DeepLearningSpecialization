@@ -6,7 +6,7 @@ Implement an RNN:
 
 **Steps:**
 1. Implement the calculations needed for one time-step of the RNN.
-2. Implement a loop over <img src="https://latex.codecogs.com/gif.latex?$T_x$ ">  time-steps in order to process all the inputs, one at a time.
+2. Implement a loop over <img src="https://latex.codecogs.com/gif.latex?$T_x$">  time-steps in order to process all the inputs, one at a time.
 
 ### RNN cell
 1. Compute the hidden state with tanh activation: <img src="https://latex.codecogs.com/gif.latex?$a^{\langle t \rangle} = \tanh(W_{aa} a^{\langle t-1 \rangle} + W_{ax} x^{\langle t \rangle} + b_a)$">.
@@ -32,7 +32,7 @@ Implement an RNN:
 
 #### - Forget gate
 
-<img src="https://latex.codecogs.com/gif.latex?$$\Gamma_f^{\langle t \rangle} = \sigma(W_f[a^{\langle t-1 \rangle}, x^{\langle t \rangle}] + b_f)\tag{1} $$">
+<img src="https://latex.codecogs.com/gif.latex?$$\Gamma_f^{\langle&space;t&space;\rangle}&space;=&space;\sigma(W_f[a^{\langle&space;t-1&space;\rangle},&space;x^{\langle&space;t&space;\rangle}]&space;&plus;&space;b_f)\tag{1}&space;$$">
 
 #### - Update gate
 
