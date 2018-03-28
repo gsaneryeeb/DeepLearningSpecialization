@@ -34,7 +34,7 @@ Here, we are using the notation "<img src="https://latex.codecogs.com/gif.latex?
 
 - The term (1) is the squared distance between the anchor "A" and the positive "P" for a given triplet; you want this to be small. 
 - The term (2) is the squared distance between the anchor "A" and the negative "N" for a given triplet, you want this to be relatively large, so it thus makes sense to have a minus sign preceding it. 
-- <img src="https://latex.codecogs.com/gif.latex?$\alpha$"> is called the margin. It is a hyperparameter that you should pick manually. We will use <img src="https://latex.codecogs.com/gif.latex?$\alpha = 0.2$">. 
+- <img src="https://latex.codecogs.com/gif.latex?$\alpha$"> is called the margin. It is a hyperparameter that you should pick manually. We will use <img src="hhttps://latex.codecogs.com/gif.latex?$\alpha&space;=&space;0.2$">. 
 
 ### Face Verification
 Three steps:
