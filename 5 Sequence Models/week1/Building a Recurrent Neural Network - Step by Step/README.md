@@ -9,10 +9,10 @@ Implement an RNN:
 2. Implement a loop over <img src="https://latex.codecogs.com/gif.latex?$T_x$">  time-steps in order to process all the inputs, one at a time.
 
 ### RNN cell
-1. Compute the hidden state with tanh activation: <img src="https://latex.codecogs.com/gif.latex?$a^{\langle t \rangle} = \tanh(W_{aa} a^{\langle t-1 \rangle} + W_{ax} x^{\langle t \rangle} + b_a)$">.
-2. Using your new hidden state <img src="https://latex.codecogs.com/gif.latex?$a^{\langle t \rangle}$">, compute the prediction <img src="https://latex.codecogs.com/gif.latex?$\hat{y}^{\langle t \rangle} = softmax(W_{ya} a^{\langle t \rangle} + b_y)$">. We provided you a function: `softmax`.
-3. Store <img src="https://latex.codecogs.com/gif.latex?$(a^{\langle t \rangle}, a^{\langle t-1 \rangle}, x^{\langle t \rangle}, parameters)$"> in cache
-4. Return <img src="https://latex.codecogs.com/gif.latex?$a^{\langle t \rangle}$"> , <img src="https://latex.codecogs.com/gif.latex?$y^{\langle t \rangle}$"> and cache
+1. Compute the hidden state with tanh activation: <img src="https://latex.codecogs.com/gif.latex?$a^{\langle&space;t&space;\rangle}&space;=&space;\tanh(W_{aa}&space;a^{\langle&space;t-1&space;\rangle}&space;&plus;&space;W_{ax}&space;x^{\langle&space;t&space;\rangle}&space;&plus;&space;b_a)$">.
+2. Using your new hidden state <img src="https://latex.codecogs.com/gif.latex?$a^{\langle&space;t&space;\rangle}$">, compute the prediction <img src="https://latex.codecogs.com/gif.latex?\hat{y}^{\langle&space;t&space;\rangle}&space;=&space;softmax(W_{ya}&space;a^{\langle&space;t&space;\rangle}&space;&plus;&space;b_y)">. We provided you a function: `softmax`.
+3. Store <img src="https://latex.codecogs.com/gif.latex?$(a^{\langle&space;t&space;\rangle},&space;a^{\langle&space;t-1&space;\rangle},&space;x^{\langle&space;t&space;\rangle},&space;parameters)$"> in cache
+4. Return <img src="https://latex.codecogs.com/gif.latex?$a^{\langle&space;t&space;\rangle}$&space;,&space;$y^{\langle&space;t&space;\rangle}$"> and cache
 
 ### RNN forward pass
 
@@ -36,19 +36,21 @@ Implement an RNN:
 
 #### - Update gate
 
-<img src="https://latex.codecogs.com/gif.latex?$$\Gamma_u^{\langle t \rangle} = \sigma(W_u[a^{\langle t-1 \rangle}, x^{\{t\}}] + b_u)\tag{2} $$"> 
+<img src="https://latex.codecogs.com/gif.latex?$$\Gamma_u^{\langle&space;t&space;\rangle}&space;=&space;\sigma(W_u[a^{\langle&space;t-1&space;\rangle},&space;x^{\{t\}}]&space;&plus;&space;b_u)\tag{2}&space;$$"> 
 
 #### - Updating the cell
 
-<img src="https://latex.codecogs.com/gif.latex?$$ \tilde{c}^{\langle t \rangle} = \tanh(W_c[a^{\langle t-1 \rangle}, x^{\langle t \rangle}] + b_c)\tag{3} $$">
+<img src="https://latex.codecogs.com/gif.latex?$$&space;\tilde{c}^{\langle&space;t&space;\rangle}&space;=&space;\tanh(W_c[a^{\langle&space;t-1&space;\rangle},&space;x^{\langle&space;t&space;\rangle}]&space;&plus;&space;b_c)\tag{3}&space;$$">
 
-<img src="https://latex.codecogs.com/gif.latex?$$ c^{\langle t \rangle} = \Gamma_f^{\langle t \rangle}* c^{\langle t-1 \rangle} + \Gamma_u^{\langle t \rangle} *\tilde{c}^{\langle t \rangle} \tag{4} $$">
+
+
+<img src="https://latex.codecogs.com/gif.latex?$$&space;c^{\langle&space;t&space;\rangle}&space;=&space;\Gamma_f^{\langle&space;t&space;\rangle}*&space;c^{\langle&space;t-1&space;\rangle}&space;&plus;&space;\Gamma_u^{\langle&space;t&space;\rangle}&space;*\tilde{c}^{\langle&space;t&space;\rangle}&space;\tag{4}&space;$$">
 
 #### - Output gate
 
-<img src="https://latex.codecogs.com/gif.latex?$$ \Gamma_o^{\langle t \rangle}=  \sigma(W_o[a^{\langle t-1 \rangle}, x^{\langle t \rangle}] + b_o)\tag{5}$$">
+<img src="https://latex.codecogs.com/gif.latex?$$&space;\Gamma_o^{\langle&space;t&space;\rangle}=&space;\sigma(W_o[a^{\langle&space;t-1&space;\rangle},&space;x^{\langle&space;t&space;\rangle}]&space;&plus;&space;b_o)\tag{5}$$">
 
-<img src="https://latex.codecogs.com/gif.latex?$$ a^{\langle t \rangle} = \Gamma_o^{\langle t \rangle}* \tanh(c^{\langle t \rangle})\tag{6} $$">
+<img src="https://latex.codecogs.com/gif.latex?$$&space;a^{\langle&space;t&space;\rangle}&space;=&space;\Gamma_o^{\langle&space;t&space;\rangle}*&space;\tanh(c^{\langle&space;t&space;\rangle})\tag{6}&space;$$">
 
 ## Useful Fuctions
 - [numpy.matmul](https://docs.scipy.org/doc/numpy/reference/generated/numpy.matmul.html): Matrix product of two arrays
