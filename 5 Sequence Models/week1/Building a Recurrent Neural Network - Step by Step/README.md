@@ -54,9 +54,9 @@ Implement an RNN:
 
 ### LSTM cell
 **Instructions**:
-1. Concatenate <img src="http://latex.codecogs.com/gif.latex?$a^{\langle&space;t-1&space;\rangle}$"> and <img src="http://latex.codecogs.com/gif.latex?$x^{\langle&space;t&space;\rangle}$"> in a single matrix: $concat = \begin{bmatrix} a^{\langle t-1 \rangle} \\ x^{\langle t \rangle} \end{bmatrix}$
+1. Concatenate <img src="http://latex.codecogs.com/gif.latex?$a^{\langle&space;t-1&space;\rangle}$"> and <img src="http://latex.codecogs.com/gif.latex?$x^{\langle&space;t&space;\rangle}$"> in a single matrix: <img src="http://latex.codecogs.com/gif.latex?$concat&space;=&space;\begin{bmatrix}&space;a^{\langle&space;t-1&space;\rangle}&space;\\&space;x^{\langle&space;t&space;\rangle}&space;\end{bmatrix}$">
 2. Compute all the formulas 1-6. You can use `sigmoid()` (provided) and `np.tanh()`.
-3. Compute the prediction $y^{\langle t \rangle}$. You can use `softmax()` (provided).
+3. Compute the prediction <img src="http://latex.codecogs.com/gif.latex?$y^{\langle&space;t&space;\rangle}$">. You can use `softmax()` (provided).
 
 ## Useful Fuctions
 - [numpy.matmul](https://docs.scipy.org/doc/numpy/reference/generated/numpy.matmul.html): Matrix product of two arrays
