@@ -53,9 +53,16 @@ Implement an RNN:
 <img src="https://latex.codecogs.com/gif.latex?$$&space;a^{\langle&space;t&space;\rangle}&space;=&space;\Gamma_o^{\langle&space;t&space;\rangle}*&space;\tanh(c^{\langle&space;t&space;\rangle})\tag{6}&space;$$">
 
 ### LSTM cell
+<<<<<<< HEAD
 1. Concatenate <img src="https://latex.codecogs.com/gif.latex?$a^{\langle&space;t-1&space;\rangle}$"> and <img src="https://latex.codecogs.com/gif.latex?$x^{\langle&space;t&space;\rangle}$"> in a single matrix: <img src="https://latex.codecogs.com/gif.latex?$concat&space;=&space;\begin{bmatrix}&space;a^{\langle&space;t-1&space;\rangle}&space;\\&space;x^{\langle&space;t&space;\rangle}&space;\end{bmatrix}$">
 2. Use `sigmoid()` (provided) and `np.tanh()`.
 3. Compute the prediction <img src="https://latex.codecogs.com/gif.latex?$y^{\langle&space;t&space;\rangle}$">. You can use `softmax()` (provided).
+=======
+**Instructions**:
+1. Concatenate <img src="http://latex.codecogs.com/gif.latex?$a^{\langle&space;t-1&space;\rangle}$"> and <img src="http://latex.codecogs.com/gif.latex?$x^{\langle&space;t&space;\rangle}$"> in a single matrix: <img src="http://latex.codecogs.com/gif.latex?$concat&space;=&space;\begin{bmatrix}&space;a^{\langle&space;t-1&space;\rangle}&space;\\&space;x^{\langle&space;t&space;\rangle}&space;\end{bmatrix}$">
+2. Compute all the formulas 1-6. You can use `sigmoid()` (provided) and `np.tanh()`.
+3. Compute the prediction <img src="http://latex.codecogs.com/gif.latex?$y^{\langle&space;t&space;\rangle}$">. You can use `softmax()` (provided).
+>>>>>>> 11e1a24e6713739eec60f6df6ed1964801d46c55
 
 ## Useful Fuctions
 - [numpy.matmul](https://docs.scipy.org/doc/numpy/reference/generated/numpy.matmul.html): Matrix product of two arrays
