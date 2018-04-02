@@ -17,7 +17,9 @@ Implement `djmodel()`. You will need to carry out 2 steps:
 It is creating a "temporary" or "unnamed" function (that's what Lambda function are) that extracts out the appropriate one-hot vector, and making this function a Keras `Layer` object to apply to `X`.
     B. Reshape x to be (1,78). You may find the `reshapor()` layer (defined below) helpful. 
     C. Run x through one step of LSTM_cell. Remember to initialize the LSTM_cell with the previous step's hidden state <img src="https://latex.codecogs.com/gif.latex?a"> and cell state <img src="https://latex.codecogs.com/gif.latex?c">. Use the following formatting:
-    
+```python
+    a, _, c = LSTM_cell(input_x, initial_state=[previous hidden state, previous cell state])
+```    
 
 ## Useful Functions
 **Keras:**
