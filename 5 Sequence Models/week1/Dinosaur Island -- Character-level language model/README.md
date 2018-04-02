@@ -28,9 +28,9 @@ We will use a simple element-wise clipping procedure, in which every element of 
 
 <img src="https://latex.codecogs.com/gif.latex?$$&space;\hat{y}^{\langle&space;t&plus;1&space;\rangle&space;}&space;=&space;softmax(z^{\langle&space;t&space;&plus;&space;1&space;\rangle&space;})\tag{3}$$">
 
-Note that $\hat{y}^{\langle t+1 \rangle }$ is a (softmax) probability vector (its entries are between 0 and 1 and sum to 1). $\hat{y}^{\langle t+1 \rangle}_i$ represents the probability that the character indexed by "i" is the next character.  We have provided a `softmax()` function that you can use.
+Note that <img src="https://latex.codecogs.com/gif.latex?\hat{y}^{\langle&space;t&plus;1&space;\rangle&space;}"> is a (softmax) probability vector (its entries are between 0 and 1 and sum to 1). <img src="https://latex.codecogs.com/gif.latex?\hat{y}^{\langle&space;t&plus;1&space;\rangle}_i"> represents the probability that the character indexed by "i" is the next character.  We have provided a `softmax()` function that you can use.
 
-- **Step 3**: Carry out sampling: Pick the next character's index according to the probability distribution specified by $\hat{y}^{\langle t+1 \rangle }$. This means that if $\hat{y}^{\langle t+1 \rangle }_i = 0.16$, you will pick the index "i" with 16% probability. To implement it, you can use [`np.random.choice`](https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.random.choice.html).
+- **Step 3**: Carry out sampling: Pick the next character's index according to the probability distribution specified by <img src="https://latex.codecogs.com/gif.latex?\hat{y}^{\langle&space;t&plus;1&space;\rangle&space;}">. This means that if <img src="https://latex.codecogs.com/gif.latex?\hat{y}^{\langle&space;t&plus;1&space;\rangle&space;}_i&space;=&space;0.16">, you will pick the index "i" with 16% probability. To implement it, you can use [`np.random.choice`](https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.random.choice.html).
 
 Here is an example of how to use `np.random.choice()`:
 ```python
@@ -41,8 +41,20 @@ index = np.random.choice([0, 1, 2, 3], p = p.ravel())
 This means that you will pick the `index` according to the distribution: 
 $P(index = 0) = 0.1, P(index = 1) = 0.0, P(index = 2) = 0.7, P(index = 3) = 0.2$.
 
-- **Step 4**: The last step to implement in `sample()` is to overwrite the variable `x`, which currently stores $x^{\langle t \rangle }$, with the value of $x^{\langle t + 1 \rangle }$. You will represent $x^{\langle t + 1 \rangle }$ by creating a one-hot vector corresponding to the character you've chosen as your prediction. You will then forward propagate $x^{\langle t + 1 \rangle }$ in Step 1 and keep repeating the process until you get a "\n" character, indicating you've reached the end of the dinosaur name. 
+- **Step 4**: The last step to implement in `sample()` is to overwrite the variable `x`, which currently stores <img src="https://latex.codecogs.com/gif.latex?x^{\langle&space;t&space;\rangle&space;}">, with the value of <img src="https://latex.codecogs.com/gif.latex?x^{\langle&space;t&space;&plus;&space;1&space;\rangle&space;}">. You will represent <img src="https://latex.codecogs.com/gif.latex?x^{\langle&space;t&space;&plus;&space;1&space;\rangle&space;}"> by creating a one-hot vector corresponding to the character you've chosen as your prediction. You will then forward propagate <img src="https://latex.codecogs.com/gif.latex?x^{\langle&space;t&space;&plus;&space;1&space;\rangle&space;}"> in Step 1 and keep repeating the process until you get a "\n" character, indicating you've reached the end of the dinosaur name. 
+
+## Building the language model
+### Gradient descent
+In this section you will implement a function performing one step of stochastic gradient descent (with clipped gradients). You will go through the training examples one at a time, so the optimization algorithm will be stochastic gradient descent. As a reminder, here are the steps of a common optimization loop for an RNN:
+
+- Forward propagate through the RNN to compute the loss
+- Backward propagate through time to compute the gradients of the loss with respect to the parameters
+- Clip the gradients if necessary
+- Update your parameters using gradient descent
+
+### Training the model
 
 
 ## Useful Functions
 - [numpy.clip](https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.clip.html): graduent clipping
+- [`np.random.choice`](https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.random.choice.html): Carry out sampling
