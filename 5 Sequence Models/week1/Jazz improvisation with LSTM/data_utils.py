@@ -3,6 +3,7 @@ from preprocess import *
 from keras.utils import to_categorical
 
 chords, abstract_grammars = get_musical_data('data/original_metheny.mid')
+corpus, tones, tones_indices, indices_tones = get_corpus_data(abstract_grammars)
 N_tones = len(set(corpus))
 n_a = 64
 x_initializer = np.zeros((1, 1, 78))
