@@ -28,7 +28,23 @@ In the word analogy task, we complete the sentence <font color='brown'>"*a* is t
 
 The key equations are:
 
+<img src="https://latex.codecogs.com/gif.latex?\mu&space;=&space;\frac{e_{w1}&space;&plus;&space;e_{w2}}{2}\">
 
+<img src="https://latex.codecogs.com/gif.latex?_{\mu&space;_{B}}=&space;\frac{\mu&space;\cdot&space;bias\_axis}{_{\left&space;\|&space;bias\_axis&space;\right&space;\|_{2}^{2}}}&space;\ast&space;bias\_axis">
+
+<img src="https://latex.codecogs.com/gif.latex?\mu_{\perp}&space;=&space;\mu&space;-&space;\mu_{B}">
+
+<img src="https://latex.codecogs.com/gif.latex?_{e_{w1B}}&space;=&space;\frac{_{e_{w1}}\cdot&space;bias\_axis}{_{\left&space;\|&space;bias\_axis&space;\right&space;\|_{2}^{2}}}&space;\ast&space;bias\_axis">
+
+<img src="https://latex.codecogs.com/gif.latex?_{e_{w2B}}&space;=&space;\frac{_{e_{w2}}\cdot&space;bias\_axis}{_{\left&space;\|&space;bias\_axis&space;\right&space;\|_{2}^{2}}}&space;\ast&space;bias\_axis">
+
+<img src="https://latex.codecogs.com/gif.latex?e_{w1B}^{corrected}&space;=&space;\sqrt{&space;|{1&space;-&space;||\mu_{\perp}&space;||^2_2}&space;|}&space;*&space;\frac{e_{\text{w1B}}&space;-&space;\mu_B}&space;{|(e_{w1}&space;-&space;\mu_{\perp})&space;-&space;\mu_B)|}">
+
+<img src="https://latex.codecogs.com/gif.latex?e_{w2B}^{corrected}&space;=&space;\sqrt{&space;|{1&space;-&space;||\mu_{\perp}&space;||^2_2}&space;|}&space;*&space;\frac{e_{\text{w2B}}&space;-&space;\mu_B}&space;{|(e_{w2}&space;-&space;\mu_{\perp})&space;-&space;\mu_B)|}">
+
+<img src="https://latex.codecogs.com/gif.latex?e_1&space;=&space;e_{w1B}^{corrected}&space;&plus;&space;\mu_{\perp}">
+
+<img src="https://latex.codecogs.com/gif.latex?e_2&space;=&space;e_{w2B}^{corrected}&space;&plus;&space;\mu_{\perp}">
 
 
 
