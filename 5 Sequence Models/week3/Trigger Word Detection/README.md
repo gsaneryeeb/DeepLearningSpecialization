@@ -101,3 +101,50 @@ Implement `create_training_example()`. You will need to carry out the following 
 2. Initialize the set of existing segments to an empty list.
 3. Randomly select 0 to 4 "activate" audio clips, and insert them onto the 10sec clip. Also insert labels at the correct position in the label vector <img src="https://latex.codecogs.com/gif.latex?y">.
 4. Randomly select 0 to 2 negative audio clips, and insert them into the 10sec clip. 
+
+## Model
+### Build the model
+
+Here is the architecture we will use.
+
+<img src="images/model.png" style="width:600px;height:600px;">
+
+One key step of this model is the 1D convolutional step (near the bottom of Figure 3). It inputs the 5511 step spectrogram, and outputs a 1375 step output, which is then further processed by multiple layers to get the final <img src="https://latex.codecogs.com/gif.latex?T_y&space;=&space;1375"> step output. This layer plays a role similar to the 2D convolutions you saw in Course 4, of extracting low-level features and then possibly generating an output of a smaller dimension. 
+
+Computationally, the 1-D conv layer also helps speed up the model because now the GRU  has to process only 1375 timesteps rather than 5511 timesteps. The two GRU layers read the sequence of inputs from left to right, then ultimately uses a dense+sigmoid layer to make a prediction for <img src="https://latex.codecogs.com/gif.latex?y^{\langle&space;t&space;\rangle}">. Because <img src="https://latex.codecogs.com/gif.latex?y"> is binary valued (0 or 1), we use a sigmoid output at the last layer to estimate the chance of the output being 1, corresponding to the user having just said "activate."
+
+Note that we use a uni-directional RNN rather than a bi-directional RNN. This is really important for trigger word detection, since we want to be able to detect the trigger word almost immediately after it is said. If we used a bi-directional RNN, we would have to wait for the whole 10sec of audio to be recorded before we could tell if "activate" was said in the first second of the audio clip.  
+
+Implementing the model can be done in four steps:
+    
+**Step 1**: CONV layer. Use `Conv1D()` to implement this, with 196 filters, 
+a filter size of 15 (`kernel_size=15`), and stride of 4. [[See documentation.](https://keras.io/layers/convolutional/#conv1d)]
+
+**Step 2**: First GRU layer. To generate the GRU layer, use:
+```
+X = GRU(units = 128, return_sequences = True)(X)
+```
+Setting `return_sequences=True` ensures that all the GRU's hidden states are fed to the next layer. Remember to follow this with Dropout and BatchNorm layers. 
+
+**Step 3**: Second GRU layer. This is similar to the previous GRU layer (remember to use `return_sequences=True`), but has an extra dropout layer. 
+
+**Step 4**: Create a time-distributed dense layer as follows: 
+```
+X = TimeDistributed(Dense(1, activation = "sigmoid"))(X)
+```
+This creates a dense layer followed by a sigmoid, so that the parameters used for the dense layer are the same for every time step. [[See documentation](https://keras.io/layers/wrappers/).]
+
+## Useful Functions
+
+- **Python**
+    - slice: `y[0, segment_end_y + 1 : segment_end_y + 51] = 1` 
+
+- **Keras:**
+    - [Conv1D](https://keras.io/layers/convolutional/#conv1d)
+    - [Layer wrappers](https://keras.io/layers/wrappers/)
+
+## Summary
+
+- Data synthesis ia an effective way to create a large training set for speech problems, specifically trigger word detection.
+- Using a spectrogram and optionally a 1D conv layer is a common pre-processing step prior to passing audio data to an RNN, GRU or LSTM.
+- An end-to-end deep learning approach can be used to built a very effective trigger word detection system.
