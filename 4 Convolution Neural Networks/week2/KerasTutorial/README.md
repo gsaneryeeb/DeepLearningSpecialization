@@ -85,7 +85,7 @@ Even if you have achieved a good accuracy, please feel free to keep playing with
 ## Useful Keras Functions
 
 - [Activation](https://keras.io/layers/core/#activation): Applies an activation function to an output. [Available activations](https://keras.io/activations/#available-activations): `softmax`, `relu`, `tanh` ...
-- [BatchNormalization](https://keras.io/layers/normalization/#batchnormalization): Batch normalization layer (Ioffe and Szegedy, 2014).
+- [BatchNormalization](https://keras.io/layers/normalization/#batchnormalization): Batch normalization layer (Ioffe and Szegedy, 2014). 
 
   Normalize the activations of the previous layer at each batch, i.e. applies a transformation that maintains the mean activation close to 0 and the activation standard deviation close to 1.
 - [Conv2D](https://keras.io/layers/convolutional/#conv2d)
